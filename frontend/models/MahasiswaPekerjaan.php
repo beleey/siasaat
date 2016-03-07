@@ -32,7 +32,7 @@ class MahasiswaPekerjaan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'pekerjaan_tempat', 'pekerjaan_jabatan', 'pekerjaan_tahun_masuk', 'pekerjaan_tahun_keluar'], 'required'],
+            [['nim', 'pekerjaan_tempat'], 'required'],
             [['pekerjaan_tahun_masuk', 'pekerjaan_tahun_keluar'], 'integer'],
             [['nim'], 'string', 'max' => 50],
             [['pekerjaan_tempat'], 'string', 'max' => 255],
@@ -47,11 +47,11 @@ class MahasiswaPekerjaan extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
-            'pekerjaan_tempat' => Yii::t('app', 'Pekerjaan Tempat'),
-            'pekerjaan_jabatan' => Yii::t('app', 'Pekerjaan Jabatan'),
-            'pekerjaan_tahun_masuk' => Yii::t('app', 'Pekerjaan Tahun Masuk'),
-            'pekerjaan_tahun_keluar' => Yii::t('app', 'Pekerjaan Tahun Keluar'),
+            'nim' => Yii::t('app', 'NIM'),
+            'pekerjaan_tempat' => Yii::t('app', 'Tempat Kerja'),
+            'pekerjaan_jabatan' => Yii::t('app', 'Jabatan'),
+            'pekerjaan_tahun_masuk' => Yii::t('app', 'Tahun Masuk'),
+            'pekerjaan_tahun_keluar' => Yii::t('app', 'Tahun Keluar'),
         ];
     }
 

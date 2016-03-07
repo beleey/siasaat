@@ -9,6 +9,11 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Mahasiswa');
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['sidenav_items'][] = [
+        'url' => ['mahasiswa/index'],
+        'label' => 'Data Mahasiswa',
+        'icon' => 'user'
+    ];
 ?>
 <div class="mahasiswa-index">
 
@@ -48,11 +53,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'label' => 'Pekerjaan',
-                        'url'   => ['update'],
+                        'url'   => ['pekerjaan'],
                     ],
                     [
                         'label' => 'Keluarga',
-                        'url'   => ['update'],
+                        'url'   => ['keluarga'],
                     ],
                     [
                         'label' => 'Kesehatan',

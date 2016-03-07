@@ -7,6 +7,10 @@ use frontend\models\Mahasiswa;
 use frontend\models\MahasiswaSearch;
 use frontend\models\MahasiswaPendidikan;
 use frontend\models\MahasiswaPendidikanSearch;
+use frontend\models\MahasiswaPekerjaan;
+use frontend\models\MahasiswaPekerjaanSearch;
+use frontend\models\MahasiswaKeluarga;
+use frontend\models\MahasiswaKeluargaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -128,7 +132,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Lists all Mahasiswa models.
+     * Lists all Pendidikan Mahasiswa
      * @return mixed
      */
     public function actionPendidikan($id)
@@ -144,6 +148,48 @@ class MahasiswaController extends Controller
                 'dataProvider' => $dataProvider,
                 'mahasiswa' => $this->findModel($id),
                 'modelPendidikan' => $modelPendidikan,
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all Pekerjaan Mahasiswa
+     * @return mixed
+     */
+    public function actionPekerjaan($id)
+    {
+        $modelPekerjaan = new MahasiswaPekerjaan();
+        if ($modelPekerjaan->load(Yii::$app->request->post()) && $modelPekerjaan->save()) {
+            return $this->redirect(['pekerjaan', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaPekerjaanSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('pekerjaan', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelPekerjaan' => $modelPekerjaan,
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all Keluarga Mahasiswa
+     * @return mixed
+     */
+    public function actionKeluarga($id)
+    {
+        $modelKeluarga = new MahasiswaKeluarga();
+        if ($modelKeluarga->load(Yii::$app->request->post()) && $modelKeluarga->save()) {
+            return $this->redirect(['keluarga', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaKeluargaSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('keluarga', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelKeluarga' => $modelKeluarga,
             ]);    
         }        
     }

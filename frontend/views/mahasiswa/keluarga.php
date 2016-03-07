@@ -7,21 +7,9 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Pekerjaan Mahasiswa');
+$this->title = Yii::t('app', 'Keluarga Mahasiswa');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->params['sidenav_items'] = [[
-        'url' => ['mahasiswa/pendidikan'],
-        'label' => 'Pendidikan Mahasiswa',
-        'icon' => 'plus'
-    ],
-    [
-        'url' => ['mahasiswa/pekerjaan'],
-        'label' => 'Pekerjaan Mahasiswa',
-        'icon' => 'plus'
-    ]
-];
 ?>
 <div class="mahasiswa-index">
 
@@ -42,24 +30,30 @@ $this->params['sidenav_items'] = [[
     </div>
     
     <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Pekerjaan') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Keluarga') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            'pekerjaan_tempat',
-                            'pekerjaan_jabatan',
-                            'pekerjaan_tahun_masuk',
-                            'pekerjaan_tahun_keluar',
-                            // 'create_date',
-                            [
+
+                            'keluarga_nama',
+                            'keluarga_hubungan',
+                            'keluarga_tgl_lahir',
+                            'keluarga_hidup_status',
+                            'keluarga_alamat',
+                            'keluarga_telp_rumah',
+                            'keluarga_telp_hp',
+                            'keluarga_pekerjaan',
+                            'keluarga_agama',
+                            'keluarga_gereja',
+
+                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'template' => '{delete}',
-                                'controller' => 'mahasiswa-pekerjaan',
+                                'controller' => 'mahasiswa-keluarga',
                             ],
                         ],
                     ]); ?>
@@ -68,12 +62,12 @@ $this->params['sidenav_items'] = [[
         </div>
     </div>
    <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Tambah Pekerjaan') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Tambah Keluarga') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
-                    <?= $this->render('//mahasiswa-pekerjaan/_form', [
-                        'model' => $modelPekerjaan,
+                    <?= $this->render('//mahasiswa-keluarga/_form', [
+                        'model' => $modelKeluarga,
                         'nim' => $mahasiswa->nim,
                     ]) ?>
                 </div>

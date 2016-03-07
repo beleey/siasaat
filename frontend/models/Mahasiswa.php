@@ -66,7 +66,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nim' => Yii::t('app', 'Nim'),
+            'nim' => Yii::t('app', 'NIM'),
             'nama' => Yii::t('app', 'Nama'),
             'panggilan' => Yii::t('app', 'Panggilan'),
             'gender' => Yii::t('app', 'Gender'),

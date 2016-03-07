@@ -50,7 +50,7 @@ class MahasiswaPendidikan extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
+            'nim' => Yii::t('app', 'NIM'),
             'pendidikan_tingkat' => Yii::t('app', 'Tingkat Pendidikan'),
             'pendidikan_nama' => Yii::t('app', 'Nama Institusi'),
             'pendidikan_tahun_masuk' => Yii::t('app', 'Tahun Masuk'),

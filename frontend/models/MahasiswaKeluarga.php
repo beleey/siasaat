@@ -38,7 +38,7 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'keluarga_nama', 'keluarga_hubungan', 'keluarga_tgl_lahir', 'keluarga_hidup_status', 'keluarga_alamat', 'keluarga_telp_rumah', 'keluarga_telp_hp', 'keluarga_pekerjaan', 'keluarga_agama', 'keluarga_gereja'], 'required'],
+            [['nim', 'keluarga_nama', 'keluarga_hubungan'], 'required'],
             [['keluarga_tgl_lahir'], 'safe'],
             [['keluarga_hidup_status'], 'integer'],
             [['nim'], 'string', 'max' => 50],
@@ -56,16 +56,16 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
         return [
             'seq' => Yii::t('app', 'Seq'),
             'nim' => Yii::t('app', 'Nim'),
-            'keluarga_nama' => Yii::t('app', 'Keluarga Nama'),
-            'keluarga_hubungan' => Yii::t('app', 'Keluarga Hubungan'),
-            'keluarga_tgl_lahir' => Yii::t('app', 'Keluarga Tgl Lahir'),
-            'keluarga_hidup_status' => Yii::t('app', 'Keluarga Hidup Status'),
-            'keluarga_alamat' => Yii::t('app', 'Keluarga Alamat'),
-            'keluarga_telp_rumah' => Yii::t('app', 'Keluarga Telp Rumah'),
-            'keluarga_telp_hp' => Yii::t('app', 'Keluarga Telp Hp'),
-            'keluarga_pekerjaan' => Yii::t('app', 'Keluarga Pekerjaan'),
-            'keluarga_agama' => Yii::t('app', 'Keluarga Agama'),
-            'keluarga_gereja' => Yii::t('app', 'Keluarga Gereja'),
+            'keluarga_nama' => Yii::t('app', 'Nama'),
+            'keluarga_hubungan' => Yii::t('app', 'Hubungan'),
+            'keluarga_tgl_lahir' => Yii::t('app', 'Tgl Lahir'),
+            'keluarga_hidup_status' => Yii::t('app', 'Status'),
+            'keluarga_alamat' => Yii::t('app', 'Alamat'),
+            'keluarga_telp_rumah' => Yii::t('app', 'Telp Rumah'),
+            'keluarga_telp_hp' => Yii::t('app', 'Telp Hp'),
+            'keluarga_pekerjaan' => Yii::t('app', 'Pekerjaan'),
+            'keluarga_agama' => Yii::t('app', 'Agama'),
+            'keluarga_gereja' => Yii::t('app', 'Gereja'),
         ];
     }
 

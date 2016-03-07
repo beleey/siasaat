@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\MahasiswaPekerjaan;
-use frontend\models\MahasiswaPekerjaanSearch;
+use frontend\models\MahasiswaKeluarga;
+use frontend\models\MahasiswaKeluargaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MahasiswaPekerjaanController implements the CRUD actions for MahasiswaPekerjaan model.
+ * MahasiswaKeluargaController implements the CRUD actions for MahasiswaKeluarga model.
  */
-class MahasiswaPekerjaanController extends Controller
+class MahasiswaKeluargaController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class MahasiswaPekerjaanController extends Controller
     }
 
     /**
-     * Lists all MahasiswaPekerjaan models.
+     * Lists all MahasiswaKeluarga models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MahasiswaPekerjaanSearch();
+        $searchModel = new MahasiswaKeluargaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class MahasiswaPekerjaanController extends Controller
     }
 
     /**
-     * Displays a single MahasiswaPekerjaan model.
+     * Displays a single MahasiswaKeluarga model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class MahasiswaPekerjaanController extends Controller
     }
 
     /**
-     * Creates a new MahasiswaPekerjaan model.
+     * Creates a new MahasiswaKeluarga model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MahasiswaPekerjaan();
+        $model = new MahasiswaKeluarga();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->seq]);
@@ -72,7 +72,7 @@ class MahasiswaPekerjaanController extends Controller
     }
 
     /**
-     * Updates an existing MahasiswaPekerjaan model.
+     * Updates an existing MahasiswaKeluarga model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class MahasiswaPekerjaanController extends Controller
     }
 
     /**
-     * Deletes an existing MahasiswaPekerjaan model.
+     * Deletes an existing MahasiswaKeluarga model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -101,19 +101,19 @@ class MahasiswaPekerjaanController extends Controller
         $model = $this->findModel($id);
         $nim = $model->nim;
         $model->delete();
-        return $this->redirect(['mahasiswa/pekerjaan','id' => $nim]);
+        return $this->redirect(['mahasiswa/keluarga','id' => $nim]);
     }
 
     /**
-     * Finds the MahasiswaPekerjaan model based on its primary key value.
+     * Finds the MahasiswaKeluarga model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MahasiswaPekerjaan the loaded model
+     * @return MahasiswaKeluarga the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MahasiswaPekerjaan::findOne($id)) !== null) {
+        if (($model = MahasiswaKeluarga::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

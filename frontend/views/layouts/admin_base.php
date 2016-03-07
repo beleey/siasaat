@@ -71,14 +71,15 @@ AdminAsset::register($this);
             <?= 
                 SideNav::widget([
                     'type' => SideNav::TYPE_WARNING,
-                    'heading' => 'Mahasiswa',
-                    'items' => [
-                        [
-                            'url' => ['mahasiswa/index'],
-                            'label' => 'Data Mahasiswa',
-                            'icon' => 'user'
-                        ]
-                    ],
+                    'heading' => isset($this->params['sidenav_heading']) ? $this->params['sidenav_heading'] : 'Mahasiswa',
+                    // 'items' => [
+                    //     [
+                    //         'url' => ['mahasiswa/index'],
+                    //         'label' => 'Data Mahasiswa',
+                    //         'icon' => 'user'
+                    //     ]
+                    // ],
+                    'items' => isset($this->params['sidenav_items']) ? $this->params['sidenav_items'] : [],
                 ]);
             ?>
             </div>
