@@ -10,9 +10,11 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Keluarga Mahasiswa');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['sidenav_heading'] = $mahasiswa->nama;
+$this->params['sidenav_items'] = $sidebar;
 ?>
 <div class="mahasiswa-index">
-
+     <h1><?= Html::encode($this->title) ?></h1>
     
     <div class="panel panel-success">
         <div class="panel-heading"><?= Yii::t('app', 'Mahasiswa') ?></div>
@@ -40,14 +42,29 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             'keluarga_nama',
-                            'keluarga_hubungan',
+                            [        
+                                'attribute' => 'keluarga_hubungan',
+                                'value' => function ($model) {
+                                    return $model::getHubungan()[$model->keluarga_hubungan] ;
+                                },
+                            ],
                             'keluarga_tgl_lahir',
-                            'keluarga_hidup_status',
+                            [        
+                                'attribute' => 'keluarga_hidup_status',
+                                'value' => function ($model) {
+                                    return $model::getStatusKeluarga()[$model->keluarga_hidup_status] ;
+                                },
+                            ],
                             'keluarga_alamat',
                             'keluarga_telp_rumah',
                             'keluarga_telp_hp',
                             'keluarga_pekerjaan',
-                            'keluarga_agama',
+                             [        
+                                'attribute' => 'keluarga_agama',
+                                'value' => function ($model) {
+                                    return $model::getAgama()[$model->keluarga_agama] ;
+                                },
+                            ],
                             'keluarga_gereja',
 
                              [

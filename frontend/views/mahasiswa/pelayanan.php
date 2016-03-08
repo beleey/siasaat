@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Pendidikan Mahasiswa');
+$this->title = Yii::t('app', 'Pengalaman Pelayanan Mahasiswa');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['sidenav_heading'] = $mahasiswa->nama;
@@ -32,7 +32,7 @@ $this->params['sidenav_items'] = $sidebar;
     </div>
     
     <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Pendidikan') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Pengalaman Pelayanan') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
@@ -41,17 +41,15 @@ $this->params['sidenav_items'] = $sidebar;
 
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            'pendidikan_tingkat',
-                            'pendidikan_nama',
-                            'pendidikan_tahun_masuk',
-                            'pendidikan_tahun_lulus',
-                            'pendidikan_gelar',
-                            'pendidikan_kota',
+                            'pelayanan_bidang',
+                            'pelayanan_posisi',
+                            'pelayanan_tahun_awal',
+                            'pelayanan_tahun_akhir',
                             // 'create_date',
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'template' => '{delete}',
-                                'controller' => 'mahasiswa-pendidikan',
+                                'controller' => 'mahasiswa-pelayanan',
                             ],
                         ],
                     ]); ?>
@@ -60,12 +58,12 @@ $this->params['sidenav_items'] = $sidebar;
         </div>
     </div>
    <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Tambah Pendidikan') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Tambah Pengalaman') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
-                    <?= $this->render('//mahasiswa-pendidikan/_form', [
-                        'model' => $modelPendidikan,
+                    <?= $this->render('//mahasiswa-pelayanan/_form', [
+                        'model' => $modelPelayanan,
                         'nim' => $mahasiswa->nim,
                     ]) ?>
                 </div>

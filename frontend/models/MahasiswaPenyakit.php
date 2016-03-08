@@ -31,7 +31,7 @@ class MahasiswaPenyakit extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'penyakit_nama', 'penyakit_keterangan', 'penyakit_tahun'], 'required'],
+            [['nim', 'penyakit_nama'], 'required'],
             [['penyakit_tahun'], 'integer'],
             [['nim'], 'string', 'max' => 50],
             [['penyakit_nama'], 'string', 'max' => 100],
@@ -47,9 +47,9 @@ class MahasiswaPenyakit extends \yii\db\ActiveRecord
         return [
             'seq' => Yii::t('app', 'Seq'),
             'nim' => Yii::t('app', 'Nim'),
-            'penyakit_nama' => Yii::t('app', 'Penyakit Nama'),
-            'penyakit_keterangan' => Yii::t('app', 'Penyakit Keterangan'),
-            'penyakit_tahun' => Yii::t('app', 'Penyakit Tahun'),
+            'penyakit_nama' => Yii::t('app', 'Nama Penyakit'),
+            'penyakit_keterangan' => Yii::t('app', 'Keterangan'),
+            'penyakit_tahun' => Yii::t('app', 'Tahun Sakit'),
         ];
     }
 

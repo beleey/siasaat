@@ -36,4 +36,7 @@ return [
         ],
     ],
     'params' => $params,
+    'modules' => [
+        'redactor' => 'yii\redactor\RedactorModule',
+    ],
 ];

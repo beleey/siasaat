@@ -61,19 +61,23 @@ $this->params['sidenav_items'][] = [
                     ],
                     [
                         'label' => 'Kesehatan',
-                        'url'   => ['update'],
+                        'url'   => ['penyakit'],
                     ],
                     [
-                        'label' => 'Rekomendasi',
-                        'url'   => ['update'],
+                        'label' => 'Pengalaman Pelayanan',
+                        'url'   => ['pelayanan'],
+                    ],
+                    [
+                        'label' => 'Rekomendasi Kerabat',
+                        'url'   => ['rekomendasi'],
                     ],
                     [
                         'label' => 'Hasil Tes & Wawancara',
-                        'url'   => ['update'],
+                        'url'   => ['hasiltest'],
                     ],
                     [
                         'label' => 'Rekomendasi Konselor',
-                        'url'   => ['update'],
+                        'url'   => ['rekomendasi-konselor'],
                     ],
                 ]
             ],

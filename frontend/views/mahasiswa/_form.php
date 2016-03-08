@@ -10,7 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="mahasiswa-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+                'options' => ['enctype'=>'multipart/form-data']
+            ]); ?>
     <div class="row">
         <div class="col-md-6 col-offset-6 centered">
             <?= $form->field($model, 'nim')->textInput(['maxlength' => true]) ?>
@@ -19,11 +21,10 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'gender')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
-            <?= Html::img('@web/../images/default_user.png');?>
+            <!--<?= Html::img('@web/../images/default_user.png');?>-->
+             <?= $form->field($model, 'image_file')->fileInput() ?>
         </div>
     </div>
-
-    
 
     <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
 

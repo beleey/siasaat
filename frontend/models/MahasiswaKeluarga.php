@@ -85,4 +85,36 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
     {
         return new MahasiswaKeluargaQuery(get_called_class());
     }
+
+    public static function getStatusKeluarga() 
+    {
+        return ['1' => Yii::t('app', 'Masih Hidup'), '2' => Yii::t('app', 'Sudah Meninggal')];
+    }
+
+    public static function getAgama() 
+    {
+        return [
+            'kristen' => Yii::t('app', 'Kristen'),
+            'katholik' => Yii::t('app', 'Katholik'),
+            'islam' => Yii::t('app', 'Islam'),
+            'hindu' => Yii::t('app', 'Hindu'),
+            'budha' => Yii::t('app', 'Budha'),
+            'kepercayaan' => Yii::t('app', 'Kepercayaan'),
+            'atheis' => Yii::t('app', 'Atheis'),
+            ];
+    }
+
+    public static function getHubungan() 
+    {
+        return [
+            'ayah' => Yii::t('app', 'Ayah'),
+            'ibu' => Yii::t('app', 'Ibu'),
+            'suami' => Yii::t('app', 'Suami'),
+            'istri' => Yii::t('app', 'Istri'),
+            'anak' => Yii::t('app', 'Anak'),
+            'kakak' => Yii::t('app', 'Kakak'),
+            'adik' => Yii::t('app', 'Adik'),
+            'lain' => Yii::t('app', 'Lainnya'),
+            ];
+    }
 }

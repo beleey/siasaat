@@ -11,6 +11,16 @@ use frontend\models\MahasiswaPekerjaan;
 use frontend\models\MahasiswaPekerjaanSearch;
 use frontend\models\MahasiswaKeluarga;
 use frontend\models\MahasiswaKeluargaSearch;
+use frontend\models\MahasiswaPenyakit;
+use frontend\models\MahasiswaPenyakitSearch;
+use frontend\models\MahasiswaRekomendasi;
+use frontend\models\MahasiswaRekomendasiSearch;
+use frontend\models\MahasiswaHasiltest;
+use frontend\models\MahasiswaHasiltestSearch;
+use frontend\models\MahasiswaPelayanan;
+use frontend\models\MahasiswaPelayananSearch;
+use frontend\models\MahasiswaRekomendasiKonselor;
+use frontend\models\MahasiswaRekomendasiKonselorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -148,6 +158,7 @@ class MahasiswaController extends Controller
                 'dataProvider' => $dataProvider,
                 'mahasiswa' => $this->findModel($id),
                 'modelPendidikan' => $modelPendidikan,
+                'sidebar' => $this->getSideBarMahasiswa($id),
             ]);    
         }        
     }
@@ -169,6 +180,7 @@ class MahasiswaController extends Controller
                 'dataProvider' => $dataProvider,
                 'mahasiswa' => $this->findModel($id),
                 'modelPekerjaan' => $modelPekerjaan,
+                'sidebar' => $this->getSideBarMahasiswa($id),
             ]);    
         }        
     }
@@ -190,6 +202,117 @@ class MahasiswaController extends Controller
                 'dataProvider' => $dataProvider,
                 'mahasiswa' => $this->findModel($id),
                 'modelKeluarga' => $modelKeluarga,
+                'sidebar' => $this->getSideBarMahasiswa($id),
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all penyakit Mahasiswa
+     * @return mixed
+     */
+    public function actionPenyakit($id)
+    {
+        $modelPenyakit = new MahasiswaPenyakit();
+        if ($modelPenyakit->load(Yii::$app->request->post()) && $modelPenyakit->save()) {
+            return $this->redirect(['penyakit', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaPenyakitSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('penyakit', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelPenyakit' => $modelPenyakit,
+                'sidebar' => $this->getSideBarMahasiswa($id),
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all rekomendasi kerabat Mahasiswa
+     * @return mixed
+     */
+    public function actionRekomendasi($id)
+    {
+        $modelRekomendasi = new MahasiswaRekomendasi();
+        if ($modelRekomendasi->load(Yii::$app->request->post()) && $modelRekomendasi->save()) {
+            return $this->redirect(['rekomendasi', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaRekomendasiSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('rekomendasi', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelRekomendasi' => $modelRekomendasi,
+                'sidebar' => $this->getSideBarMahasiswa($id),
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all hasil test Mahasiswa
+     * @return mixed
+     */
+    public function actionHasiltest($id)
+    {
+        $modelHasiltest = new MahasiswaHasiltest();
+        if ($modelHasiltest->load(Yii::$app->request->post()) && $modelHasiltest->save()) {
+            return $this->redirect(['hasiltest', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaHasiltestSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('hasiltest', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelHasiltest' => $modelHasiltest,
+                'sidebar' => $this->getSideBarMahasiswa($id),
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all pengalaman pelayanan Mahasiswa
+     * @return mixed
+     */
+    public function actionPelayanan($id)
+    {
+        $modelPelayanan = new MahasiswaPelayanan();
+        if ($modelPelayanan->load(Yii::$app->request->post()) && $modelPelayanan->save()) {
+            return $this->redirect(['pelayanan', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaPelayananSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('pelayanan', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelPelayanan' => $modelPelayanan,
+                'sidebar' => $this->getSideBarMahasiswa($id),
+            ]);    
+        }        
+    }
+
+    /**
+     * Lists all pengalaman pelayanan Mahasiswa
+     * @return mixed
+     */
+    public function actionRekomendasiKonselor($id)
+    {
+        $modelKonselor = new MahasiswaRekomendasiKonselor();
+        if ($modelKonselor->load(Yii::$app->request->post()) && $modelKonselor->save()) {
+            return $this->redirect(['rekomendasi-konselor', 'id' => $id]);
+        } else {
+            $searchModel = new MahasiswaRekomendasiKonselorSearch();
+            $dataProvider = $searchModel->search(['nim' => $id]);
+            return $this->render('rekomendasi-konselor', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'mahasiswa' => $this->findModel($id),
+                'modelKonselor' => $modelKonselor,
+                'sidebar' => $this->getSideBarMahasiswa($id),
             ]);    
         }        
     }
@@ -208,5 +331,50 @@ class MahasiswaController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    protected function getSideBarMahasiswa($id) 
+    {
+        return [[
+                'url' => ['mahasiswa/pendidikan','id' => $id],
+                'label' => 'Pendidikan Mahasiswa',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/pekerjaan','id' => $id],
+                'label' => 'Pekerjaan Mahasiswa',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/keluarga','id' => $id],
+                'label' => 'Keluarga Mahasiswa',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/penyakit','id' => $id],
+                'label' => 'Riwayat Kesehatan',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/pelayanan','id' => $id],
+                'label' => 'Pengalaman Pelayanan',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/rekomendasi','id' => $id],
+                'label' => 'Rekomendasi Kerabat',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/hasiltest','id' => $id],
+                'label' => 'Hasil Test & Wawancara',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/rekomendasi-konselor','id' => $id],
+                'label' => 'Rekomendasi Konselor',
+                'icon' => 'plus'
+            ]
+        ];
     }
 }

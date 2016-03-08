@@ -10,21 +10,11 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Pekerjaan Mahasiswa');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->params['sidenav_items'] = [[
-        'url' => ['mahasiswa/pendidikan'],
-        'label' => 'Pendidikan Mahasiswa',
-        'icon' => 'plus'
-    ],
-    [
-        'url' => ['mahasiswa/pekerjaan'],
-        'label' => 'Pekerjaan Mahasiswa',
-        'icon' => 'plus'
-    ]
-];
+$this->params['sidenav_heading'] = $mahasiswa->nama;
+$this->params['sidenav_items'] = $sidebar;
 ?>
 <div class="mahasiswa-index">
-
+     <h1><?= Html::encode($this->title) ?></h1>
     
     <div class="panel panel-success">
         <div class="panel-heading"><?= Yii::t('app', 'Mahasiswa') ?></div>

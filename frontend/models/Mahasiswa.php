@@ -56,7 +56,8 @@ class Mahasiswa extends \yii\db\ActiveRecord
             [['panggilan', 'tempat_lahir', 'kota', 'kode_pos', 'email', 'bangsa'], 'string', 'max' => 100],
             [['gender'], 'string', 'max' => 20],
             [['gol_darah'], 'string', 'max' => 10],
-            [['telp_rumah', 'telp_hp'], 'string', 'max' => 30]
+            [['telp_rumah', 'telp_hp'], 'string', 'max' => 30],
+            [['image_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg'],
         ];
     }
 
@@ -82,6 +83,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'bangsa' => Yii::t('app', 'Bangsa'),
             'tahun_angkatan' => Yii::t('app', 'Tahun Angkatan'),
             'create_date' => Yii::t('app', 'Create Date'),
+            'image_file' => Yii::t('app', 'Foto'),
         ];
     }
 

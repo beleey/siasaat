@@ -20,6 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "rmrevin/yii2-fontawesome": "2.10.*",
         "kartik-v/yii2-widgets": "*",
+        "yiidoc/yii2-redactor": "*",
+        "microinginer/yii2-dropdown-action-column": "dev-master"
         
     },
     "require-dev": {

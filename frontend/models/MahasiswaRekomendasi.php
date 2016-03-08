@@ -17,6 +17,7 @@ use Yii;
  * @property string $rekomendasi_telp_rumah
  * @property string $rekomendasi_telp_hp
  * @property string $rekomendasi_email
+  * @property string $rekomendasi_isi
  *
  * @property Mahasiswa $nim0
  */
@@ -36,8 +37,9 @@ class MahasiswaRekomendasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'rekomendasi_nama', 'rekomendasi_jabatan', 'rekomendasi_alamat', 'rekomendasi_kota', 'rekomendasi_kodepos', 'rekomendasi_telp_rumah', 'rekomendasi_telp_hp', 'rekomendasi_email'], 'required'],
+            [['nim', 'rekomendasi_nama', 'rekomendasi_jabatan', 'rekomendasi_isi'], 'required'],
             [['nim', 'rekomendasi_email'], 'string', 'max' => 50],
+            [['rekomendasi_isi'], 'string'],
             [['rekomendasi_nama', 'rekomendasi_alamat'], 'string', 'max' => 255],
             [['rekomendasi_jabatan', 'rekomendasi_kota'], 'string', 'max' => 100],
             [['rekomendasi_kodepos'], 'string', 'max' => 20],
@@ -53,14 +55,15 @@ class MahasiswaRekomendasi extends \yii\db\ActiveRecord
         return [
             'seq' => Yii::t('app', 'Seq'),
             'nim' => Yii::t('app', 'Nim'),
-            'rekomendasi_nama' => Yii::t('app', 'Rekomendasi Nama'),
-            'rekomendasi_jabatan' => Yii::t('app', 'Rekomendasi Jabatan'),
-            'rekomendasi_alamat' => Yii::t('app', 'Rekomendasi Alamat'),
-            'rekomendasi_kota' => Yii::t('app', 'Rekomendasi Kota'),
-            'rekomendasi_kodepos' => Yii::t('app', 'Rekomendasi Kodepos'),
-            'rekomendasi_telp_rumah' => Yii::t('app', 'Rekomendasi Telp Rumah'),
-            'rekomendasi_telp_hp' => Yii::t('app', 'Rekomendasi Telp Hp'),
-            'rekomendasi_email' => Yii::t('app', 'Rekomendasi Email'),
+            'rekomendasi_nama' => Yii::t('app', 'Nama Rekomendator'),
+            'rekomendasi_jabatan' => Yii::t('app', 'Jabatan Rekomendator'),
+            'rekomendasi_alamat' => Yii::t('app', 'Alamat'),
+            'rekomendasi_kota' => Yii::t('app', 'Kota'),
+            'rekomendasi_kodepos' => Yii::t('app', 'Kode Pos'),
+            'rekomendasi_telp_rumah' => Yii::t('app', 'Telp Rumah'),
+            'rekomendasi_telp_hp' => Yii::t('app', 'Telp Hp'),
+            'rekomendasi_email' => Yii::t('app', 'Email'),
+            'rekomendasi_rekomendasi' => Yii::t('app', 'Isi Rekomendasi'),
         ];
     }
 
@@ -79,5 +82,14 @@ class MahasiswaRekomendasi extends \yii\db\ActiveRecord
     public static function find()
     {
         return new MahasiswaRekomendasiQuery(get_called_class());
+    }
+
+    public static function getJabatan() 
+    {
+        return [
+            'rohaniwan' => Yii::t('app', 'Rohaniwan'),
+            'majelis' => Yii::t('app', 'Majelis/Pembimbing'),
+            'rekan' => Yii::t('app', 'Rekan Pelayanan'),
+            ];
     }
 }

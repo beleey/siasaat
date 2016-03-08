@@ -32,7 +32,7 @@ class MahasiswaPelayanan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'pelayanan_bidang', 'pelayanan_posisi', 'pelayanan_tahun_awal', 'pelayanan_tahun_akhir'], 'required'],
+            [['nim', 'pelayanan_bidang', 'pelayanan_posisi', 'pelayanan_tahun_awal'], 'required'],
             [['pelayanan_tahun_awal', 'pelayanan_tahun_akhir'], 'integer'],
             [['nim'], 'string', 'max' => 50],
             [['pelayanan_bidang', 'pelayanan_posisi'], 'string', 'max' => 100]
@@ -46,11 +46,11 @@ class MahasiswaPelayanan extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
-            'pelayanan_bidang' => Yii::t('app', 'Pelayanan Bidang'),
-            'pelayanan_posisi' => Yii::t('app', 'Pelayanan Posisi'),
-            'pelayanan_tahun_awal' => Yii::t('app', 'Pelayanan Tahun Awal'),
-            'pelayanan_tahun_akhir' => Yii::t('app', 'Pelayanan Tahun Akhir'),
+            'nim' => Yii::t('app', 'NIM'),
+            'pelayanan_bidang' => Yii::t('app', 'Bidang Pelayanan'),
+            'pelayanan_posisi' => Yii::t('app', 'Posisi Pelayanan'),
+            'pelayanan_tahun_awal' => Yii::t('app', 'Tahun Mulai'),
+            'pelayanan_tahun_akhir' => Yii::t('app', 'Tahun Selesai'),
         ];
     }
 
