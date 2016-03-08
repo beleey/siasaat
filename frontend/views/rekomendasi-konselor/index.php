@@ -7,29 +7,18 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\MahasiswaRekomendasiKonselorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Mahasiswa Rekomendasi Konselors');
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mahasiswa-rekomendasi-konselor-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Mahasiswa Rekomendasi Konselor'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'seq',
-            'nim',
-            'rekomendasi:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'attribute' => 'rekomendasi',
+                'format' => 'html',
+            ],
         ],
     ]); ?>
 

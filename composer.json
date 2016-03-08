@@ -21,7 +21,8 @@
         "rmrevin/yii2-fontawesome": "2.10.*",
         "kartik-v/yii2-widgets": "*",
         "yiidoc/yii2-redactor": "*",
-        "microinginer/yii2-dropdown-action-column": "dev-master"
+        "microinginer/yii2-dropdown-action-column": "dev-master",
+        "kartik-v/yii2-tabs-x": "*"
         
     },
     "require-dev": {

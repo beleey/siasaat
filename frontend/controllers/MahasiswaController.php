@@ -86,7 +86,43 @@ class MahasiswaController extends Controller
      */
     public function actionView($id)
     {
+        $searchModelPendidikan = new MahasiswaPendidikanSearch();
+        $searchModelPekerjaan = new MahasiswaPekerjaanSearch();
+        $searchModelKeluarga = new MahasiswaKeluargaSearch();
+        $searchModelPenyakit = new MahasiswaPenyakitSearch();
+        $searchModelPelayanan = new MahasiswaPelayananSearch();
+        $searchModelRekomendasi = new MahasiswaRekomendasiSearch();
+        $searchModelHasiltest = new MahasiswaHasiltestSearch();
+        $searchModelKonselor = new MahasiswaRekomendasiKonselorSearch();
+        $dataProviderPendidikan = $searchModelPendidikan->search(['nim' => $id]);
+        $dataProviderPekerjaan = $searchModelPekerjaan->search(['nim' => $id]);
+        $dataProviderKeluarga = $searchModelKeluarga->search(['nim' => $id]);
+        $dataProviderPenyakit = $searchModelPenyakit->search(['nim' => $id]);
+        $dataProviderPelayanan = $searchModelPelayanan->search(['nim' => $id]);
+        $dataProviderRekomendasi = $searchModelRekomendasi->search(['nim' => $id]);
+        $dataProviderHasiltest = $searchModelHasiltest->search(['nim' => $id]);
+        $dataProviderKonselor = $searchModelKonselor->search(['nim' => $id]);
         return $this->render('view', [
+            'model' => $this->findModel($id),
+            'dataProviderPendidikan' => $dataProviderPendidikan,
+            'dataProviderPekerjaan' => $dataProviderPekerjaan,
+            'dataProviderKeluarga' => $dataProviderKeluarga,
+            'dataProviderPenyakit' => $dataProviderPenyakit,
+            'dataProviderPelayanan' => $dataProviderPelayanan,
+            'dataProviderRekomendasi' => $dataProviderRekomendasi,
+            'dataProviderHasiltest' => $dataProviderHasiltest,
+            'dataProviderKonselor' => $dataProviderKonselor,
+        ]);
+    }
+
+    /**
+     * Displays a single Mahasiswa model.
+     * @param string $id
+     * @return mixed
+     */
+    public function actionViewDataDiri($id)
+    {
+        return $this->render('view-data-diri', [
             'model' => $this->findModel($id),
         ]);
     }
