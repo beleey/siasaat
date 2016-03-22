@@ -13,11 +13,11 @@ use yii\helpers\Html;
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="<?= Yii::$app->urlManager->createUrl(['site/login']); ?>" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Login</span></a>
+                                <a href="<?= Yii::$app->urlManager->createUrl(['site/login']); ?>" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Masuk</span></a>
                             </li>
-                            <!-- <li>
-                                <a href="<?= Yii::$app->urlManager->createUrl(['site/login']); ?>" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Sudah Daftar</span></a>
-                             --></li>
+                            <li>
+                                <a href="<?= Yii::$app->urlManager->createUrl(['site/signup']); ?>" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Pengguna Baru</span></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ use yii\helpers\Html;
 
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <?= Html::img('@web/../images/daftar-maba.jpg', ['alt'=>'', 'class'=>'img-responsive img-rounded']) ?> 
+                <?= Html::img('@web/images/daftar-maba.jpg', ['alt'=>'', 'class'=>'img-responsive img-rounded']) ?> 
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@ use yii\helpers\Html;
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-6">
-                <?= Html::img('@web/../images/prosedur.jpg', ['alt'=>'', 'class'=>'img-responsive img-rounded']) ?> 
+                <?= Html::img('@web/images/prosedur.jpg', ['alt'=>'', 'class'=>'img-responsive img-rounded']) ?> 
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                 <hr class="section-heading-spacer">

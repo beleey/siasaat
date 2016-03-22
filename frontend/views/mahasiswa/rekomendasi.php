@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Rekomendasi Kerabat');
+$this->title = Yii::t('app', 'Rekomendasi');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['sidenav_heading'] = $mahasiswa->nama;

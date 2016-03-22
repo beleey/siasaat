@@ -46,7 +46,7 @@ class MahasiswaPenyakit extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
+            'nim' => Yii::t('app', 'NIM'),
             'penyakit_nama' => Yii::t('app', 'Nama Penyakit'),
             'penyakit_keterangan' => Yii::t('app', 'Keterangan'),
             'penyakit_tahun' => Yii::t('app', 'Tahun Sakit'),

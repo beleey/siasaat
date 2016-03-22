@@ -29,6 +29,16 @@ use yii\grid\GridView;
             'rekomendasi_telp_hp',
             'rekomendasi_email:email',
         ],
+        'afterRow' => function($model, $key, $index) {
+            return Html::tag('tr',
+                Html::tag('td', '')
+                .Html::tag('td', '<b>' . Yii::t('app', 'Rekomendasi: ') . '</b>' . $model->rekomendasi_isi, ['colspan'=>'9'])
+                //add more columns
+            );
+        }
     ]); ?>
+    <p>
+        <?= Html::a(Yii::t('app', 'Update'), ['mahasiswa/rekomendasi', 'id' => $nim], ['class' => 'btn btn-primary']) ?>
+    </p>
 
 </div>

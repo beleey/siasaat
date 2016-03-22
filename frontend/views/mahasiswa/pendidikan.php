@@ -41,7 +41,12 @@ $this->params['sidenav_items'] = $sidebar;
 
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            'pendidikan_tingkat',
+                            [        
+                                'attribute' => 'pendidikan_tingkat',
+                                'value' => function ($model) {
+                                    return $model::getTingkatPendidikan()[$model->pendidikan_tingkat] ;
+                                },
+                            ],
                             'pendidikan_nama',
                             'pendidikan_tahun_masuk',
                             'pendidikan_tahun_lulus',

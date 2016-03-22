@@ -19,6 +19,7 @@ use Yii;
  * @property string $keluarga_pekerjaan
  * @property string $keluarga_agama
  * @property string $keluarga_gereja
+ * @property string $keluarga_keterangan
  *
  * @property Mahasiswa $nim0
  */
@@ -44,7 +45,8 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
             [['nim'], 'string', 'max' => 50],
             [['keluarga_nama', 'keluarga_alamat'], 'string', 'max' => 255],
             [['keluarga_hubungan', 'keluarga_pekerjaan'], 'string', 'max' => 100],
-            [['keluarga_telp_rumah', 'keluarga_telp_hp', 'keluarga_agama', 'keluarga_gereja'], 'string', 'max' => 30]
+            [['keluarga_telp_rumah', 'keluarga_telp_hp', 'keluarga_agama', 'keluarga_gereja'], 'string', 'max' => 30],
+            [['keluarga_keterangan'], 'string'],
         ];
     }
 
@@ -55,7 +57,7 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
+            'nim' => Yii::t('app', 'NIM'),
             'keluarga_nama' => Yii::t('app', 'Nama'),
             'keluarga_hubungan' => Yii::t('app', 'Hubungan'),
             'keluarga_tgl_lahir' => Yii::t('app', 'Tgl Lahir'),
@@ -66,6 +68,7 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
             'keluarga_pekerjaan' => Yii::t('app', 'Pekerjaan'),
             'keluarga_agama' => Yii::t('app', 'Agama'),
             'keluarga_gereja' => Yii::t('app', 'Gereja'),
+            'keluarga_keterangan' => Yii::t('app', 'Keterangan'),
         ];
     }
 
@@ -107,14 +110,14 @@ class MahasiswaKeluarga extends \yii\db\ActiveRecord
     public static function getHubungan() 
     {
         return [
-            'ayah' => Yii::t('app', 'Ayah'),
-            'ibu' => Yii::t('app', 'Ibu'),
-            'suami' => Yii::t('app', 'Suami'),
-            'istri' => Yii::t('app', 'Istri'),
-            'anak' => Yii::t('app', 'Anak'),
-            'kakak' => Yii::t('app', 'Kakak'),
-            'adik' => Yii::t('app', 'Adik'),
-            'lain' => Yii::t('app', 'Lainnya'),
+            '1_ayah' => Yii::t('app', 'Ayah'),
+            '2_ibu' => Yii::t('app', 'Ibu'),
+            '3_suami' => Yii::t('app', 'Suami'),
+            '4_istri' => Yii::t('app', 'Istri'),
+            '5_anak' => Yii::t('app', 'Anak'),
+            '6_kakak' => Yii::t('app', 'Kakak'),
+            '7_adik' => Yii::t('app', 'Adik'),
+            '8_lain' => Yii::t('app', 'Lainnya'),
             ];
     }
 }

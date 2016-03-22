@@ -54,7 +54,7 @@ class MahasiswaRekomendasi extends \yii\db\ActiveRecord
     {
         return [
             'seq' => Yii::t('app', 'Seq'),
-            'nim' => Yii::t('app', 'Nim'),
+            'nim' => Yii::t('app', 'NIM'),
             'rekomendasi_nama' => Yii::t('app', 'Nama Rekomendator'),
             'rekomendasi_jabatan' => Yii::t('app', 'Jabatan Rekomendator'),
             'rekomendasi_alamat' => Yii::t('app', 'Alamat'),
@@ -87,9 +87,9 @@ class MahasiswaRekomendasi extends \yii\db\ActiveRecord
     public static function getJabatan() 
     {
         return [
-            'rohaniwan' => Yii::t('app', 'Rohaniwan'),
-            'majelis' => Yii::t('app', 'Majelis/Pembimbing'),
-            'rekan' => Yii::t('app', 'Rekan Pelayanan'),
+            '1_rohaniwan' => Yii::t('app', 'Rohaniwan'),
+            '2_majelis' => Yii::t('app', 'Majelis/Pembimbing'),
+            '3_rekan' => Yii::t('app', 'Rekan Pelayanan'),
             ];
     }
 }

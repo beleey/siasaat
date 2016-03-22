@@ -12,7 +12,10 @@ use yii\widgets\DetailView;
             'nim',
             'nama',
             'panggilan',
-            'gender',
+            [        
+                'attribute' => 'gender',
+                'value' => $model->getGender()[$model->gender],
+            ],
             'tempat_lahir',
             'tgl_lahir',
             'gol_darah',

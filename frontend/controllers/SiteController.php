@@ -26,7 +26,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -116,21 +116,49 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    // public function actionSignup()
-    // {
-    //     $model = new SignupForm();
-    //     if ($model->load(Yii::$app->request->post())) {
-    //         if ($user = $model->signup()) {
-    //             if (Yii::$app->getUser()->login($user)) {
-    //                 return $this->goHome();
-    //             }
-    //         }
-    //     }
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                $email = \Yii::$app->mailer->compose()
+                    ->setTo($user->email)
+                    ->setFrom([\Yii::$app->params['supportEmail'] => Yii::t('app', 'SIASAAT Administrator')])
+                    ->setSubject(Yii::t('app', 'SIASAAT Signup Confirmation'))
+                    ->setHtmlBody(Yii::t('app', 'Silahkan klik link berikut ini untuk konfirmasi: ') . "<br>" . \yii\helpers\Html::a(Yii::t('app', 'Konfirmasi'),
+                        Yii::$app->urlManager->createAbsoluteUrl(['site/confirm','id'=>$user->id,'key'=>$user->auth_key])) . "<br><br><p>" . Yii::t('app', 'SIASAAT Administrator') . "</p>")
+                    ->send();
 
-    //     return $this->render('signup', [
-    //         'model' => $model,
-    //     ]);
-    // }
+                if($email){
+                    Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Anda telah berhasil melakukan pendaftaran pengguna. Silahkan Cek Email Anda untuk konfirmasi'));
+                } else{
+                    Yii::$app->getSession()->setFlash('warning',Yii::t('app', 'Gagal melakukan kontak. Silahkan menghubungi Administrator SIASAAT'));
+                }
+                //return $this->goHome();
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionConfirm($id, $key)
+    {
+        $user = \common\models\User::find()->where([
+            'id'=>$id,
+            'auth_key'=>$key,
+            'status'=>0,
+        ])->one();
+        if(!empty($user)){
+            $user->status=10;
+            $user->save();
+            Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Anda berhasil melakukan konfirmasi. Silahkan melakukan login untuk mengakses aplikasi SIASAAT'));
+        } else {
+            Yii::$app->getSession()->setFlash('warning',Yii::t('app', 'Anda GAGAL melakukan konfirmasi. Jika Anda sudah pernah melakukan konfirmasi sebelumnya, silahkan mencoba login dengan user dan password yang telah Anda daftarkan.'));
+        }
+        return $this->redirect('login');
+    }
 
     /**
      * Requests password reset.

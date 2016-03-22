@@ -38,6 +38,7 @@ use kartik\widgets\DatePicker;
             <?= $form->field($model, 'keluarga_pekerjaan')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'keluarga_agama')->dropDownList($model::getAgama(),['prompt' => '--' . Yii::t('app', 'Pilih Agama') . '--']); ?>
             <?= $form->field($model, 'keluarga_gereja')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'keluarga_keterangan')->textArea(['rows' => '6']) ?>
         </div>
     </div>
 

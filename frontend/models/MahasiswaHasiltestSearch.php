@@ -46,18 +46,11 @@ class MahasiswaHasiltestSearch extends MahasiswaHasiltest
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
-            'defaultOrder' => [
-                'nama_test' => SORT_ASC,
-            ]
-    ],
+                    'defaultOrder' => [
+                        'nama_test' => SORT_ASC,
+                    ]
+            ],
         ]);
-
-        $dataProvider->sort->attributes['nama_test'] = [
-            // The tables are the ones our relation are configured to
-            // in my case they are prefixed with "tbl_"
-            'asc' => ['nama_test' => SORT_ASC],
-            'desc' => ['nama_test' => SORT_DESC],
-        ];
 
         $this->load($params,'');
 

@@ -48,7 +48,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'nama', 'panggilan', 'gender', 'tempat_lahir', 'tgl_lahir', 'gol_darah', 'alamat', 'kota', 'kode_pos', 'telp_rumah', 'telp_hp', 'email', 'bangsa', 'tahun_angkatan', 'create_date'], 'required'],
+            [['nim', 'nama', 'gender', 'tempat_lahir', 'tgl_lahir', 'alamat', 'kota', 'bangsa', 'tahun_angkatan', 'create_date'], 'required'],
             [['tgl_lahir', 'create_date'], 'safe'],
             [['tahun_angkatan'], 'integer'],
             [['nim'], 'string', 'max' => 50],
@@ -141,5 +141,13 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function getMahasiswaTambahans()
     {
         return $this->hasMany(MahasiswaTambahan::className(), ['nim' => 'nim']);
+    }
+
+    public static function getGender() 
+    {
+        return [
+            'L' => Yii::t('app', 'Laki-laki'),
+            'P' => Yii::t('app', 'Perempuan'),
+            ];
     }
 }

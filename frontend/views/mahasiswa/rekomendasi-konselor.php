@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Rekomendasi Konselor');
+$this->title = Yii::t('app', 'Catatan Khusus');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['mahasiswa/index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['sidenav_heading'] = $mahasiswa->nama;
@@ -32,7 +32,7 @@ $this->params['sidenav_items'] = $sidebar;
     </div>
     
     <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Rekomendasi Konselor') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Catatan Khusus') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
@@ -56,7 +56,7 @@ $this->params['sidenav_items'] = $sidebar;
         </div>
     </div>
    <div class="panel panel-success">
-        <div class="panel-heading"><?= Yii::t('app', 'Tambah Rekomendasi') ?></div>
+        <div class="panel-heading"><?= Yii::t('app', 'Tambah Catatan') ?></div>
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">

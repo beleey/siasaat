@@ -3,9 +3,9 @@
 namespace frontend\models;
 
 /**
- * This is the ActiveQuery class for [[MahasiswaTambahan]].
+ * This is the ActiveQuery class for [[MahasiswaRekomendasi]].
  *
- * @see MahasiswaTambahan
+ * @see MahasiswaRekomendasi
  */
 class MahasiswaTambahanQuery extends \yii\db\ActiveQuery
 {
@@ -17,7 +17,7 @@ class MahasiswaTambahanQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return MahasiswaTambahan[]|array
+     * @return MahasiswaRekomendasi[]|array
      */
     public function all($db = null)
     {
@@ -26,7 +26,7 @@ class MahasiswaTambahanQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return MahasiswaTambahan|array|null
+     * @return MahasiswaRekomendasi|array|null
      */
     public function one($db = null)
     {

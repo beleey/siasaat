@@ -45,6 +45,11 @@ class MahasiswaPelayananSearch extends MahasiswaPelayanan
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                    'defaultOrder' => [
+                        'pelayanan_tahun_awal' => SORT_ASC,
+                    ]
+            ],
         ]);
 
         $this->load($params,'');

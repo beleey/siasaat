@@ -22,5 +22,7 @@ use yii\grid\GridView;
 
         ],
     ]); ?>
-
+    <p>
+        <?= Html::a(Yii::t('app', 'Update'), ['mahasiswa/penyakit', 'id' => $nim], ['class' => 'btn btn-primary']) ?>
+    </p>
 </div>

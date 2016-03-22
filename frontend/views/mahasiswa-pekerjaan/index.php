@@ -21,5 +21,8 @@ use yii\grid\GridView;
             'pekerjaan_tahun_keluar',
         ],
     ]); ?>
+    <p>
+        <?= Html::a(Yii::t('app', 'Update'), ['mahasiswa/pekerjaan', 'id' => $nim], ['class' => 'btn btn-primary']) ?>
+    </p>
 
 </div>

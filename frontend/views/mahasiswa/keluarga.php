@@ -52,17 +52,17 @@ $this->params['sidenav_items'] = $sidebar;
                             [        
                                 'attribute' => 'keluarga_hidup_status',
                                 'value' => function ($model) {
-                                    return $model::getStatusKeluarga()[$model->keluarga_hidup_status] ;
+                                    return (isset($model->keluarga_hidup_status) ? $model::getStatusKeluarga()[$model->keluarga_hidup_status] : NULL);
                                 },
                             ],
                             'keluarga_alamat',
                             'keluarga_telp_rumah',
                             'keluarga_telp_hp',
                             'keluarga_pekerjaan',
-                             [        
+                            [        
                                 'attribute' => 'keluarga_agama',
                                 'value' => function ($model) {
-                                    return $model::getAgama()[$model->keluarga_agama] ;
+                                    return ($model->keluarga_agama ? $model::getAgama()[$model->keluarga_agama] : NULL);
                                 },
                             ],
                             'keluarga_gereja',
@@ -73,6 +73,13 @@ $this->params['sidenav_items'] = $sidebar;
                                 'controller' => 'mahasiswa-keluarga',
                             ],
                         ],
+                         'afterRow' => function($model, $key, $index) {
+                            return Html::tag('tr',
+                                Html::tag('td', '')
+                                .Html::tag('td', '<b style="color:#337ab7">' . Yii::t('app', 'Keterangan: ') . '</b>' . $model->keluarga_keterangan, ['colspan'=>'9'])
+                                //add more columns
+                            );
+                        }
                     ]); ?>
                 </div>                
             </div>

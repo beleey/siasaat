@@ -5,6 +5,10 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Mahasiswa;
 use frontend\models\MahasiswaSearch;
+use frontend\models\MahasiswaTambahan;
+use frontend\models\MahasiswaTambahanSearch;
+use frontend\models\MahasiswaRohani;
+use frontend\models\MahasiswaRohaniSearch;
 use frontend\models\MahasiswaPendidikan;
 use frontend\models\MahasiswaPendidikanSearch;
 use frontend\models\MahasiswaPekerjaan;
@@ -85,7 +89,7 @@ class MahasiswaController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    { 
         $searchModelPendidikan = new MahasiswaPendidikanSearch();
         $searchModelPekerjaan = new MahasiswaPekerjaanSearch();
         $searchModelKeluarga = new MahasiswaKeluargaSearch();
@@ -102,8 +106,17 @@ class MahasiswaController extends Controller
         $dataProviderRekomendasi = $searchModelRekomendasi->search(['nim' => $id]);
         $dataProviderHasiltest = $searchModelHasiltest->search(['nim' => $id]);
         $dataProviderKonselor = $searchModelKonselor->search(['nim' => $id]);
+        if (!$modelTambahan = MahasiswaTambahan::find()->where(['nim' => $id])->one()) {
+            $modelTambahan = new MahasiswaTambahan();
+        }
+
+        if (!$modelRohani = MahasiswaRohani::find()->where(['nim' => $id])->one()) {
+            $modelRohani = new MahasiswaRohani();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'modelTambahan' => $modelTambahan,
+            'modelRohani' => $modelRohani,
             'dataProviderPendidikan' => $dataProviderPendidikan,
             'dataProviderPekerjaan' => $dataProviderPekerjaan,
             'dataProviderKeluarga' => $dataProviderKeluarga,
@@ -175,6 +188,69 @@ class MahasiswaController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Lists all Pendidikan Mahasiswa
+     * @return mixed
+     */
+    public function actionTambahan($id)
+    {
+        if ($model = MahasiswaTambahan::find()->where(['nim' => $id])->one()) {
+            $modelTambahan = $model;
+        } else {
+            $modelTambahan = new MahasiswaTambahan();    
+        }
+        
+        if ($modelTambahan->load(Yii::$app->request->post()) && $modelTambahan->save()) {
+            return $this->redirect(['tambahan', 'id' => $id, 'save' => '1']);
+        } else {
+            if ($model !== null) {
+                return $this->render('tambahan', [
+                    'mahasiswa' => $this->findModel($id),
+                    'modelTambahan' => $model,
+                    'sidebar' => $this->getSideBarMahasiswa($id),
+                ]);
+            } else {
+                return $this->render('tambahan', [
+                    'mahasiswa' => $this->findModel($id),
+                    'modelTambahan' => $modelTambahan,
+                    'sidebar' => $this->getSideBarMahasiswa($id),
+                ]);
+            }
+                
+        }        
+    }
+
+    /**
+     * Lists all Kehidupan Rohani & Kesaksian Mahasiswa 
+     * @return mixed
+     */
+    public function actionRohani($id)
+    {
+        if ($model = MahasiswaRohani::find()->where(['nim' => $id])->one()) {
+            $modelRohani = $model;
+        } else {
+            $modelRohani = new MahasiswaRohani();    
+        }
+        
+        if ($modelRohani->load(Yii::$app->request->post()) && $modelRohani->save()) {
+            return $this->redirect(['rohani', 'id' => $id, 'save' => '1']);
+        } else {
+            if ($model !== null) {
+                return $this->render('rohani', [
+                    'mahasiswa' => $this->findModel($id),
+                    'modelRohani' => $model,
+                    'sidebar' => $this->getSideBarMahasiswa($id),
+                ]);
+            } else {
+                return $this->render('rohani', [
+                    'mahasiswa' => $this->findModel($id),
+                    'modelRohani' => $modelRohani,
+                    'sidebar' => $this->getSideBarMahasiswa($id),
+                ]);
+            }
+        }       
     }
 
     /**
@@ -371,7 +447,23 @@ class MahasiswaController extends Controller
 
     protected function getSideBarMahasiswa($id) 
     {
-        return [[
+        return [
+            [
+                'url' => ['mahasiswa/index'],
+                'label' => Yii::t('app', 'Daftar Mahasiswa'),
+                'icon' => 'user'
+            ],
+            [
+                'url' => ['mahasiswa/tambahan','id' => $id],
+                'label' => 'Data Diri Tambahan',
+                'icon' => 'plus'
+            ],
+            [
+                'url' => ['mahasiswa/rohani','id' => $id],
+                'label' => 'Kehidupan Rohani & Kesaksian',
+                'icon' => 'plus'
+            ],
+            [
                 'url' => ['mahasiswa/pendidikan','id' => $id],
                 'label' => 'Pendidikan Mahasiswa',
                 'icon' => 'plus'
@@ -398,7 +490,7 @@ class MahasiswaController extends Controller
             ],
             [
                 'url' => ['mahasiswa/rekomendasi','id' => $id],
-                'label' => 'Rekomendasi Kerabat',
+                'label' => 'Rekomendasi',
                 'icon' => 'plus'
             ],
             [
@@ -408,7 +500,7 @@ class MahasiswaController extends Controller
             ],
             [
                 'url' => ['mahasiswa/rekomendasi-konselor','id' => $id],
-                'label' => 'Rekomendasi Konselor',
+                'label' => 'Catatan Khusus',
                 'icon' => 'plus'
             ]
         ];

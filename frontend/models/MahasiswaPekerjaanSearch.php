@@ -45,6 +45,11 @@ class MahasiswaPekerjaanSearch extends MahasiswaPekerjaan
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                    'defaultOrder' => [
+                        'pekerjaan_tahun_masuk' => SORT_ASC,
+                    ]
+            ],
         ]);
 
         $this->load($params,'');

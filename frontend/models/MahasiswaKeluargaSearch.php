@@ -19,7 +19,7 @@ class MahasiswaKeluargaSearch extends MahasiswaKeluarga
     {
         return [
             [['seq', 'keluarga_hidup_status'], 'integer'],
-            [['nim', 'keluarga_nama', 'keluarga_hubungan', 'keluarga_tgl_lahir', 'keluarga_alamat', 'keluarga_telp_rumah', 'keluarga_telp_hp', 'keluarga_pekerjaan', 'keluarga_agama', 'keluarga_gereja'], 'safe'],
+            [['nim', 'keluarga_nama', 'keluarga_hubungan', 'keluarga_tgl_lahir', 'keluarga_alamat', 'keluarga_telp_rumah', 'keluarga_telp_hp', 'keluarga_pekerjaan', 'keluarga_agama', 'keluarga_gereja', 'keluarga_keterangan'], 'safe'],
         ];
     }
 

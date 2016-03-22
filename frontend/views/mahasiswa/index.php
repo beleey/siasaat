@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Mahasiswa');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['sidenav_items'][] = [
         'url' => ['mahasiswa/index'],
-        'label' => 'Data Mahasiswa',
+        'label' => Yii::t('app', 'Daftar Mahasiswa'),
         'icon' => 'user'
     ];
 ?>
@@ -33,7 +33,12 @@ $this->params['sidenav_items'][] = [
 
             'nim',
             'nama',
-            'gender',
+             [        
+                'attribute' => 'gender',
+                'value' => function ($model) {
+                    return $model::getGender()[$model->gender] ;
+                },
+            ],
             'tahun_angkatan',
             // 'create_date',
             [
@@ -43,9 +48,17 @@ $this->params['sidenav_items'][] = [
             [
                 'class' => \microinginer\dropDownActionColumn\DropDownActionColumn::className(),
                 'items' => [
+                   [
+                        'label' => 'Data Diri Tambahan',
+                        'url'   => ['tambahan'],
+                    ],
                     [
-                        'label' => 'Pendidikan',
-                        'url'   => ['pendidikan'],
+                        'label' => 'Data Diri Tambahan',
+                        'url'   => ['tambahan'],
+                    ],
+                     [
+                        'label' => 'Kehidupan Rohani & Kesaksian',
+                        'url'   => ['rohani'],
                     ],
                     [
                         'label' => 'Pendidikan',
@@ -68,7 +81,7 @@ $this->params['sidenav_items'][] = [
                         'url'   => ['pelayanan'],
                     ],
                     [
-                        'label' => 'Rekomendasi Kerabat',
+                        'label' => 'Rekomendasi',
                         'url'   => ['rekomendasi'],
                     ],
                     [
@@ -76,7 +89,7 @@ $this->params['sidenav_items'][] = [
                         'url'   => ['hasiltest'],
                     ],
                     [
-                        'label' => 'Rekomendasi Konselor',
+                        'label' => 'Catatan Khusus',
                         'url'   => ['rekomendasi-konselor'],
                     ],
                 ]

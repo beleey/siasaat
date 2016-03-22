@@ -41,7 +41,7 @@ class MahasiswaRekomendasiKonselor extends \yii\db\ActiveRecord
         return [
             'seq' => Yii::t('app', 'Seq'),
             'nim' => Yii::t('app', 'NIM'),
-            'rekomendasi' => Yii::t('app', 'Rekomendasi'),
+            'rekomendasi' => Yii::t('app', 'Catatan'),
         ];
     }
 }

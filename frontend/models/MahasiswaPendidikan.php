@@ -79,6 +79,6 @@ class MahasiswaPendidikan extends \yii\db\ActiveRecord
 
     public static function getTingkatPendidikan() 
     {
-        return ['Tingkat Dasar' => Yii::t('app', 'Tingkat Dasar'), 'Tingkat Menengah' => Yii::t('app', 'Tingkat Menengah'), 'Tingkat Atas' => Yii::t('app', 'Tingkat Atas'), 'Sarjana - S1' => Yii::t('app', 'Sarjana - S1'), 'Pasca Sarjana - S2' => Yii::t('app', 'Pasca Sarjana - S2'), 'Pasca Sarjana - S3' => Yii::t('app', 'Pasca Sarjana - S3')];
+        return ['1_Tingkat Dasar' => Yii::t('app', 'Tingkat Dasar'), '2_Tingkat Menengah' => Yii::t('app', 'Tingkat Menengah'), '3_Tingkat Atas' => Yii::t('app', 'Tingkat Atas'), '4_Sarjana - S1' => Yii::t('app', 'Sarjana - S1'), '5_Pasca Sarjana - S2' => Yii::t('app', 'Pasca Sarjana - S2'), '6_Pasca Sarjana - S3' => Yii::t('app', 'Pasca Sarjana - S3')];
     }
 }

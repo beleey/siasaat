@@ -45,6 +45,11 @@ class MahasiswaPenyakitSearch extends MahasiswaPenyakit
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                    'defaultOrder' => [
+                        'penyakit_tahun' => SORT_ASC,
+                    ]
+            ],
         ]);
 
         $this->load($params,'');

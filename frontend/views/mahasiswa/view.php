@@ -10,14 +10,19 @@ use kartik\tabs\TabsX;
 $this->title = $model->nama . " (" . $model->nim . ")";
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mahasiswa'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['sidenav_items'][] = [
+        'url' => ['mahasiswa/index'],
+        'label' => Yii::t('app', 'Daftar Mahasiswa'),
+        'icon' => 'user'
+    ];
 ?>
 <div class="mahasiswa-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= TabsX::widget([
-            'position' => TabsX::POS_ABOVE,
-            'align' => TabsX::ALIGN_LEFT,
+           'position'=>TabsX::POS_LEFT,
+            'encodeLabels'=>false,
             'items' => [
                 [
                     'label' => Yii::t('app', 'Data Diri'),
@@ -25,6 +30,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                     ]),
                     'active' => true
+                ],
+                [
+                    'label' => Yii::t('app', 'Data Diri Tambahan'),
+                    'content' => $this->render('//mahasiswa-tambahan/view', [
+                        'model' => $modelTambahan,
+                         'nim' => $model->nim,
+                    ]),
+                ],
+                [
+                    'label' => Yii::t('app', 'Keh. Rohani & Kesaksian'),
+                    'content' => $this->render('//mahasiswa-rohani/view', [
+                        'model' => $modelRohani,
+                        'nim' => $model->nim,
+                    ]),
                 ],
                 [
                     'label' => Yii::t('app', 'Pendidikan'),
@@ -76,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]),
                 ],
                 [
-                    'label' => Yii::t('app', 'Rek. Konselor'),
+                    'label' => Yii::t('app', 'Catatan Khusus'),
                     'content' => $this->render('//rekomendasi-konselor/index', [
                         'dataProvider' => $dataProviderKonselor,
                         'nim' => $model->nim,

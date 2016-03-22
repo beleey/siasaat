@@ -45,6 +45,11 @@ class MahasiswaPendidikanSearch extends MahasiswaPendidikan
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                    'defaultOrder' => [
+                        'pendidikan_tingkat' => SORT_DESC,
+                    ]
+            ],
         ]);
 
         $this->load($params,'');
